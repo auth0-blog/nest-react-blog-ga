@@ -77,7 +77,7 @@ function Home() {
                   </li>
                   <li>
                     {
-                      // isAuthenticated && (user.name === post.author) &&
+                      isAuthenticated && (user.name === post.author) &&
                       <button className="btn btn-sm btn-outline-secondary" onClick={() => deletePost(post._id)}>Delete Post</button>
                     }
                   </li>
