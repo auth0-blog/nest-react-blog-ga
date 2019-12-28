@@ -40,7 +40,7 @@ function Create(): JSX.Element {
   const submitform = async (formData: {}) => {
     try {
       const accessToken = await getIdTokenClaims();
-      const response = await fetch(`http://localhost:5000/blog/post`, {
+      const response = await fetch(`${process.env.REACT_APP_SERVER_BASE_URL}/blog/post`, {
         method: "post",
         headers: new Headers({
           "Content-Type": "application/json",
@@ -68,7 +68,7 @@ function Create(): JSX.Element {
     if (user) {
       setAuthor(user.name)
     }
-  })
+  }, [user])
 
   return (
     <div>

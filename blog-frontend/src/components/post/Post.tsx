@@ -7,15 +7,14 @@ function Post() {
 
   const [post, setPost] = useState<any>({});
 
-  const fetchData = async (): Promise<void> => {
-    const response = await fetch(`http://localhost:5000/blog/post/${postId}`);
-    const json = await response.json();
-    setPost(json);
-  }
-
   useEffect(() => {
+    const fetchData = async (): Promise<void> => {
+      const response = await fetch(`${process.env.REACT_APP_SERVER_BASE_URL}/blog/post/${postId}`);
+      const json = await response.json();
+      setPost(json);
+    }
     fetchData();
-  }, [fetchData]);
+  }, [postId]);
 
     return (
         <section className="post-area">

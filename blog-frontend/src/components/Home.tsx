@@ -11,7 +11,7 @@ function Home() {
 
   const deletePost = async(id: string) => {
     const accessToken = await getIdTokenClaims();
-    await fetch(`http://localhost:5000/blog/delete?postID=${id}`, {
+    await fetch(`${process.env.REACT_APP_SERVER_BASE_URL}/blog/delete?postID=${id}`, {
       method: "delete",
       headers: new Headers({
         "Content-Type": "application/json",
@@ -28,15 +28,14 @@ function Home() {
     posts.splice(index, 1);
   }
 
-  const fetchPosts = async (): Promise<any> => {
-    const response = await fetch(`http://localhost:5000/blog/posts`);
-    const json = await response.json();
-    setPosts(json)
-  }
-
   useEffect(() => {
+    const fetchPosts = async (): Promise<any> => {
+      const response = await fetch(`${process.env.REACT_APP_SERVER_BASE_URL}/blog/posts`);
+      const json = await response.json();
+      setPosts(json)
+    }
     fetchPosts();
-  }, [fetchPosts])
+  }, [])
 
     return (
         <section className="blog-area section">

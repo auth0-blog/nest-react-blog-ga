@@ -35,7 +35,7 @@ function Edit(): JSX.Element {
   const submitForm = async (): Promise<boolean> => {
     try {
       const accessToken = await getIdTokenClaims();
-      const response = await fetch(`http://localhost:5000/blog/edit?postID=${postId}`, {
+      const response = await fetch(`${process.env.REACT_APP_SERVER_BASE_URL}/blog/edit?postID=${postId}`, {
         method: "put",
         headers: new Headers({
           "Content-Type": "application/json",
@@ -60,12 +60,12 @@ function Edit(): JSX.Element {
 
   useEffect(() => {
     const fetchData = async (): Promise<void> => {
-      const response = await fetch(`http://localhost:5000/blog/post/${postId}`);
+      const response = await fetch(`${process.env.REACT_APP_SERVER_BASE_URL}/blog/post/${postId}`);
       const json = await response.json();
       setPost(json)    
     }
     fetchData();    
-  }, []);
+  }, [postId]);
 
   return (
     <div className={'page-wrapper'}>

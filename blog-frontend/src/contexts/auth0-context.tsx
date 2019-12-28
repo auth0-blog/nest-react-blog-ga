@@ -45,10 +45,7 @@ export class Auth0Provider extends Component<{}, IState> {
 	};
 
 	componentDidMount() {
-		this.initializeAuth0();
-		// console.log("Right here");
-
-		
+		this.initializeAuth0();		
 	}
 
 	// initialize the auth0 library
