@@ -3,7 +3,7 @@ import { Link, useHistory } from 'react-router-dom';
 import { useAuth0 } from '../contexts/auth0-context';
 
 
-function Home() {
+function Home():JSX.Element {
   let history = useHistory()
   const { isAuthenticated, getIdTokenClaims, user } = useAuth0();
 

@@ -19,6 +19,15 @@ function Edit(): JSX.Element {
   const [submitSuccess, setSubmitSuccess] = useState<boolean>(false)
   const [loading, setLoading] = useState(false);
 
+  useEffect(() => {
+    const fetchData = async (): Promise<void> => {
+      const response = await fetch(`${process.env.REACT_APP_SERVER_BASE_URL}/blog/post/${postId}`);
+      const json = await response.json();
+      setPost(json)    
+    }
+    fetchData();    
+  }, [postId]);
+
   const handleFormSubmission = async (e: React.FormEvent<HTMLFormElement>): Promise<void> => {
     e.preventDefault();
     setLoading(true);
@@ -57,15 +66,6 @@ function Edit(): JSX.Element {
   const handleInputChanges = (e: React.FormEvent<HTMLInputElement>) => {
     setFormValues({ [e.currentTarget.id]: e.currentTarget.value })
   }
-
-  useEffect(() => {
-    const fetchData = async (): Promise<void> => {
-      const response = await fetch(`${process.env.REACT_APP_SERVER_BASE_URL}/blog/post/${postId}`);
-      const json = await response.json();
-      setPost(json)    
-    }
-    fetchData();    
-  }, [postId]);
 
   return (
     <div className={'page-wrapper'}>

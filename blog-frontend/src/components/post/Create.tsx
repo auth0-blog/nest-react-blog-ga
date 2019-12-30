@@ -17,6 +17,12 @@ function Create(): JSX.Element {
   const [submitSuccess, setSubmitSuccess] = useState<boolean>(false);
   const [loading, setLoading] = useState<boolean>(false);
 
+  useEffect(() => {
+    if (user) {
+      setAuthor(user.name)
+    }
+  }, [user])
+
   const handleFormSubmission = async (e: React.FormEvent<HTMLFormElement>): Promise<void> => {
     e.preventDefault();
     setLoading(true);
@@ -63,12 +69,6 @@ function Create(): JSX.Element {
     e.preventDefault();
     setFormValues({ [e.currentTarget.name]: e.currentTarget.value })
   }
-
-  useEffect(() => {
-    if (user) {
-      setAuthor(user.name)
-    }
-  }, [user])
 
   return (
     <div>
