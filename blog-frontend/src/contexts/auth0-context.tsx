@@ -3,7 +3,7 @@ import createAuth0Client from '@auth0/auth0-spa-js';
 import Auth0Client from '@auth0/auth0-spa-js';
 
 
-type ContextValueType = {
+interface ContextValueType {
 	isAuthenticated?: boolean,
 	user?: any,
 	isLoading?: boolean,
@@ -12,11 +12,11 @@ type ContextValueType = {
 	loginWithRedirect?: (...p: any) => any,
 	getTokenSilently?: (...p: any) => any,
 	logout?: (...p: any) => any
-  }
+}
 
 
 // create the context
-export const Auth0Context: any = createContext<ContextValueType>({});
+export const Auth0Context: any = createContext<ContextValueType | null>(null);
 export const useAuth0: any = () => useContext(Auth0Context);
 
 interface IState {
