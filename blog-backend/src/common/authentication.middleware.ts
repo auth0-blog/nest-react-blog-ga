@@ -17,7 +17,7 @@ export class AuthenticationMiddleware implements NestMiddleware {
           jwksUri: `https://${process.env.AUTH0_DOMAIN}/.well-known/jwks.json`,
         }),
         issuer: `https://${process.env.AUTH0_DOMAIN}/`,
-        algorithm: ['RS256'],
+        algorithms: ['RS256'],
       })(req, res, (err) => {
         if (err) {
           const status = err.status || 500;
