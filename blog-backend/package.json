@@ -23,7 +23,7 @@
     "@nestjs/common": "^6.7.2",
     "@nestjs/core": "^6.7.2",
     "@nestjs/mongoose": "^6.1.2",
-    "@nestjs/platform-express": "^6.7.2",
+    "@nestjs/platform-express": "^9.2.1",
     "dotenv": "^8.2.0",
     "express-jwt": "^5.3.1",
     "jwks-rsa": "^1.6.0",
